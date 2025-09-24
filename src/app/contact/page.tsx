@@ -15,7 +15,7 @@ export default function Contact() {
               </h1>
               <div className="w-24 h-1 bg-white mx-auto mb-8"></div>
               <p className="text-lg text-gray-400 max-w-2xl mx-auto leading-relaxed">
-                Ready to bring your vision to life? Let's create something amazing together.
+                Ready to bring your vision to life? Let&apos;s create something amazing together.
               </p>
             </div>
           
@@ -137,6 +137,7 @@ export default function Contact() {
                 </button>
               </form>
             </div>
+          </div>
           </div>
         </div>
       </main>

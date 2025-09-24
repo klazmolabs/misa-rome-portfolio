@@ -1,6 +1,6 @@
 import Header from '@/components/Header';
 import PortfolioGrid from '@/components/PortfolioGrid';
-import VideoPlayer from '@/components/VideoPlayer';
+// import VideoPlayer from '@/components/VideoPlayer';
 
 const liveEventItems = [
   {

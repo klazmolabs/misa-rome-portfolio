@@ -1,7 +1,7 @@
 'use client';
 
-import Header from '@/components/Header';
-import PortfolioGrid from '@/components/PortfolioGrid';
+// import Header from '@/components/Header';
+// import PortfolioGrid from '@/components/PortfolioGrid';
 import VideoPlayer from '@/components/VideoPlayer';
 import LoadingScreen from '@/components/LoadingScreen';
 import Image from 'next/image';
@@ -9,37 +9,37 @@ import { useState, useEffect, useRef } from 'react';
 import { VideoManager } from '@/utils/VideoManager';
 import { getVideoUrl, videoFiles } from '@/utils/getVideoUrl';
 
-// Sample portfolio items - replace with actual content
-const portfolioItems = [
-  {
-    id: '1',
-    title: 'Corporate Event Coverage',
-    category: 'Live Event',
-    imageUrl: 'https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=800&h=600&fit=crop',
-    href: '/work/corporate-event-coverage',
-  },
-  {
-    id: '2',
-    title: 'Brand Documentary',
-    category: 'Productions',
-    imageUrl: 'https://images.unsplash.com/photo-1478720568477-152d9b164e26?w=800&h=600&fit=crop',
-    href: '/work/brand-documentary',
-  },
-  {
-    id: '3',
-    title: 'Music Video - "Midnight"',
-    category: 'Directed',
-    imageUrl: 'https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=800&h=600&fit=crop',
-    href: '/work/music-video-midnight',
-  },
-  {
-    id: '4',
-    title: 'Conference Highlights',
-    category: 'Live Event',
-    imageUrl: 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800&h=600&fit=crop',
-    href: '/work/conference-highlights',
-  },
-];
+// Sample portfolio items - replace with actual content (currently unused)
+// const portfolioItems = [
+//   {
+//     id: '1',
+//     title: 'Corporate Event Coverage',
+//     category: 'Live Event',
+//     imageUrl: 'https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=800&h=600&fit=crop',
+//     href: '/work/corporate-event-coverage',
+//   },
+//   {
+//     id: '2',
+//     title: 'Brand Documentary',
+//     category: 'Productions',
+//     imageUrl: 'https://images.unsplash.com/photo-1478720568477-152d9b164e26?w=800&h=600&fit=crop',
+//     href: '/work/brand-documentary',
+//   },
+//   {
+//     id: '3',
+//     title: 'Music Video - "Midnight"',
+//     category: 'Directed',
+//     imageUrl: 'https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=800&h=600&fit=crop',
+//     href: '/work/music-video-midnight',
+//   },
+//   {
+//     id: '4',
+//     title: 'Conference Highlights',
+//     category: 'Live Event',
+//     imageUrl: 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800&h=600&fit=crop',
+//     href: '/work/conference-highlights',
+//   },
+// ];
 
 
 export default function Home() {

@@ -135,11 +135,11 @@ const VideoPlayer = ({ src, title, category, poster, className = '' }: VideoPlay
   }, [isVisible]);
 
   // Simple throttle function
-  const throttle = (func: Function, limit: number) => {
+  const throttle = (func: (...args: unknown[]) => void, limit: number) => {
     let inThrottle: boolean;
-    return function(this: any, ...args: any[]) {
+    return function(...args: unknown[]) {
       if (!inThrottle) {
-        func.apply(this, args);
+        func(...args);
         inThrottle = true;
         setTimeout(() => inThrottle = false, limit);
       }
