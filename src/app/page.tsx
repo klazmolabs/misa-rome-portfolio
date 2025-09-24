@@ -7,6 +7,7 @@ import LoadingScreen from '@/components/LoadingScreen';
 import Image from 'next/image';
 import { useState, useEffect, useRef } from 'react';
 import { VideoManager } from '@/utils/VideoManager';
+import { getVideoUrl, videoFiles } from '@/utils/getVideoUrl';
 
 // Sample portfolio items - replace with actual content
 const portfolioItems = [
@@ -166,7 +167,7 @@ export default function Home() {
               height: '100%'
             }}
           >
-            <source src="/videos/MisaRome/MAIN_optimized.mp4" type="video/mp4" />
+            <source src={getVideoUrl(videoFiles.hero)} type="video/mp4" />
             Your browser does not support the video tag.
           </video>
           
@@ -206,7 +207,7 @@ export default function Home() {
               {/* FIRST 1 Video - Featured */}
               <div className="w-full max-w-4xl mx-auto">
                 <VideoPlayer
-                  src="/videos/MisaRome/FIRST_1_optimized.mp4"
+                  src={getVideoUrl(videoFiles.first)}
                   title="First"
                   category="Featured"
                 />
@@ -215,62 +216,62 @@ export default function Home() {
               {/* Rest of the videos in a grid - All Optimized */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
                 <VideoPlayer
-                  src="/videos/MisaRome/RECAP_DONE_optimized.mp4"
+                  src={getVideoUrl(videoFiles.recap)}
                   title="Recap"
                   category="Work"
                 />
                 <VideoPlayer
-                  src="/videos/MisaRome/FOR_INSTA_optimized.mp4"
+                  src={getVideoUrl(videoFiles.instagram)}
                   title="Instagram Reel"
                   category="Social"
                 />
                 <VideoPlayer
-                  src="/videos/MisaRome/this_is_me_optimized.mp4"
+                  src={getVideoUrl(videoFiles.thisIsMe)}
                   title="This Is Me"
                   category="Personal"
                 />
                 <VideoPlayer
-                  src="/videos/MisaRome/we_ready_optimized.mp4"
+                  src={getVideoUrl(videoFiles.weReady)}
                   title="We Ready"
                   category="Work"
                 />
                 <VideoPlayer
-                  src="/videos/MisaRome/Karen_1_optimized.mp4"
+                  src={getVideoUrl(videoFiles.karen)}
                   title="Karen"
                   category="Featured"
                 />
                 <VideoPlayer
-                  src="/videos/MisaRome/como_david_optimized.mp4"
+                  src={getVideoUrl(videoFiles.comoDavid)}
                   title="Como David"
                   category="Personal"
                 />
                 <VideoPlayer
-                  src="/videos/MisaRome/4k_version_optimized.mp4"
+                  src={getVideoUrl(videoFiles.fourK)}
                   title="4K Version"
                   category="Work"
                 />
                 <VideoPlayer
-                  src="/videos/MisaRome/grade_3_optimized.mp4"
+                  src={getVideoUrl(videoFiles.grade3)}
                   title="Grade 3"
                   category="Work"
                 />
                 <VideoPlayer
-                  src="/videos/MisaRome/me_optimized.mp4"
+                  src={getVideoUrl(videoFiles.me)}
                   title="Me"
                   category="Personal"
                 />
                 <VideoPlayer
-                  src="/videos/MisaRome/clip_6_optimized.mp4"
+                  src={getVideoUrl(videoFiles.clip6)}
                   title="Clip 6"
                   category="Work"
                 />
                 <VideoPlayer
-                  src="/videos/MisaRome/RECAP_NO_TITLES_optimized.mp4"
+                  src={getVideoUrl(videoFiles.recapNoTitles)}
                   title="Recap No Titles"
                   category="Work"
                 />
                 <VideoPlayer
-                  src="/videos/MisaRome/rugged_optimized.mp4"
+                  src={getVideoUrl(videoFiles.rugged)}
                   title="Rugged"
                   category="Work"
                 />
