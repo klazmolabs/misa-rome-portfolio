@@ -42,9 +42,10 @@ next-env.d.ts
 # OS generated files
 Thumbs.db
 
-# Large video files (optional - you might want to track these)
-# public/videos/*.mp4
-# public/videos/*.mov
+# Large video files (excluded due to size - 21GB total)
+public/videos/*.mp4
+public/videos/*.mov
+public/videos/
 
 # Logs
 logs
