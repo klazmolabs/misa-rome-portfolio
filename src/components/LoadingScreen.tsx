@@ -1,35 +1,23 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 
 interface LoadingScreenProps {
   onLoadingComplete: () => void;
 }
 
 const LoadingScreen = ({ onLoadingComplete }: LoadingScreenProps) => {
-  const [progress, setProgress] = useState(0);
-  const [loadingText, setLoadingText] = useState('Loading');
-
   useEffect(() => {
-    const interval = setInterval(() => {
-      setProgress((prev) => {
-        if (prev >= 100) {
-          clearInterval(interval);
-          // Shorter delay for faster transition to hero video
-          setTimeout(() => {
-            onLoadingComplete();
-          }, 300);
-          return 100;
-        }
-        return prev + Math.random() * 12 + 8; // Slightly faster progress (8-20 increments)
-      });
-    }, 150); // Faster interval for smoother progress
+    // Simple timer for loading duration
+    const timer = setTimeout(() => {
+      onLoadingComplete();
+    }, 2000); // 2 second loading duration
 
     // Preload critical videos
     const videosToPreload = [
-      '/videos/MisaRome/MAIN.mp4',
-      '/videos/MisaRome/FIRST 1.mp4',
-      '/videos/MisaRome/RECAP DONE.mp4'
+      '/videos/MisaRome/MAIN_optimized.mp4',
+      '/videos/MisaRome/FIRST_1_optimized.mp4',
+      '/videos/MisaRome/Karen_1_optimized.mp4'
     ];
 
     videosToPreload.forEach((src) => {
@@ -38,17 +26,8 @@ const LoadingScreen = ({ onLoadingComplete }: LoadingScreenProps) => {
       video.src = src;
     });
 
-    // Loading text animation
-    const textInterval = setInterval(() => {
-      setLoadingText((prev) => {
-        if (prev === 'Loading...') return 'Loading';
-        return prev + '.';
-      });
-    }, 500);
-
     return () => {
-      clearInterval(interval);
-      clearInterval(textInterval);
+      clearTimeout(timer);
     };
   }, [onLoadingComplete]);
 
@@ -73,60 +52,32 @@ const LoadingScreen = ({ onLoadingComplete }: LoadingScreenProps) => {
       <div className="absolute inset-0 bg-gradient-to-br from-black via-gray-900/20 to-black"></div>
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(255,255,255,0.02)_0%,transparent_50%)]"></div>
       
-      {/* Content - Perfectly Centered */}
+      {/* Small Loading Wheel - Centered */}
       <div 
-        className="relative z-10 text-center"
+        className="relative z-10 flex items-center justify-center"
         style={{
           position: 'relative',
           zIndex: 10,
-          textAlign: 'center',
           display: 'flex',
-          flexDirection: 'column',
           alignItems: 'center',
           justifyContent: 'center'
         }}
       >
-        {/* Large Progress Percentage - Smaller on mobile */}
+        {/* Loading Wheel */}
         <div 
-          className="text-white text-6xl md:text-8xl lg:text-9xl font-black tracking-tight"
+          className="w-12 h-12 border-2 border-white/20 border-t-white rounded-full animate-spin"
           style={{
-            fontSize: 'clamp(4rem, 12vw, 9rem)',
-            fontWeight: '900',
-            color: 'white',
-            letterSpacing: '-0.025em',
-            lineHeight: '1',
-            margin: 0,
-            padding: 0
+            width: '48px',
+            height: '48px',
+            border: '2px solid rgba(255, 255, 255, 0.2)',
+            borderTopColor: 'white',
+            borderRadius: '50%',
+            animation: 'spin 1s linear infinite'
           }}
-        >
-          {Math.round(Math.min(progress, 100))}%
-        </div>
-        
-        {/* Subtle loading text below */}
-        <div 
-          className="mt-8"
-          style={{
-            marginTop: '2rem'
-          }}
-        >
-          <p 
-            className="text-white/40 text-sm font-light tracking-widest uppercase"
-            style={{
-              color: 'rgba(255, 255, 255, 0.4)',
-              fontSize: '0.875rem',
-              fontWeight: '300',
-              letterSpacing: '0.2em',
-              textTransform: 'uppercase',
-              margin: 0,
-              padding: 0
-            }}
-          >
-            {loadingText}
-          </p>
-        </div>
+        ></div>
       </div>
 
-      {/* Fade out animation */}
+      {/* Animations */}
       <style jsx>{`
         .fade-out {
           animation: fadeOut 0.8s ease-out forwards;
@@ -136,6 +87,15 @@ const LoadingScreen = ({ onLoadingComplete }: LoadingScreenProps) => {
           to {
             opacity: 0;
             visibility: hidden;
+          }
+        }
+        
+        @keyframes spin {
+          from {
+            transform: rotate(0deg);
+          }
+          to {
+            transform: rotate(360deg);
           }
         }
       `}</style>
