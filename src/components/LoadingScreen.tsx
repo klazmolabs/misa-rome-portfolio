@@ -85,11 +85,11 @@ const LoadingScreen = ({ onLoadingComplete }: LoadingScreenProps) => {
           justifyContent: 'center'
         }}
       >
-        {/* Large Progress Percentage */}
+        {/* Large Progress Percentage - Smaller on mobile */}
         <div 
-          className="text-white text-8xl md:text-9xl font-black tracking-tight"
+          className="text-white text-6xl md:text-8xl lg:text-9xl font-black tracking-tight"
           style={{
-            fontSize: 'clamp(6rem, 15vw, 9rem)',
+            fontSize: 'clamp(4rem, 12vw, 9rem)',
             fontWeight: '900',
             color: 'white',
             letterSpacing: '-0.025em',

@@ -213,6 +213,15 @@ export default function Home() {
                 />
               </div>
 
+              {/* KAREN Video - Featured (appears right after First 1) */}
+              <div className="w-full max-w-4xl mx-auto">
+                <VideoPlayer
+                  src={getVideoUrl(videoFiles.karen)}
+                  title="Karen"
+                  category="Featured"
+                />
+              </div>
+
               {/* Rest of the videos in a grid - All Optimized */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
                 <VideoPlayer
@@ -234,11 +243,6 @@ export default function Home() {
                   src={getVideoUrl(videoFiles.weReady)}
                   title="We Ready"
                   category="Work"
-                />
-                <VideoPlayer
-                  src={getVideoUrl(videoFiles.karen)}
-                  title="Karen"
-                  category="Featured"
                 />
                 <VideoPlayer
                   src={getVideoUrl(videoFiles.comoDavid)}
