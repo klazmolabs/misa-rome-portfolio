@@ -15,14 +15,15 @@ const LoadingScreen = ({ onLoadingComplete }: LoadingScreenProps) => {
       setProgress((prev) => {
         if (prev >= 100) {
           clearInterval(interval);
+          // Shorter delay for faster transition to hero video
           setTimeout(() => {
             onLoadingComplete();
-          }, 500);
+          }, 300);
           return 100;
         }
-        return prev + Math.random() * 15 + 5; // Random increment between 5-20
+        return prev + Math.random() * 12 + 8; // Slightly faster progress (8-20 increments)
       });
-    }, 200);
+    }, 150); // Faster interval for smoother progress
 
     // Preload critical videos
     const videosToPreload = [

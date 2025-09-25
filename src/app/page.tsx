@@ -92,15 +92,38 @@ export default function Home() {
   const handleLoadingComplete = () => {
     setIsLoading(false);
     
-    // Force hero video to play after loading
+    // Force hero video to play immediately after loading screen ends
     setTimeout(() => {
       if (heroVideoRef.current) {
         heroVideoRef.current.muted = true;
-        heroVideoRef.current.play().catch(() => {
-          console.log('Hero video autoplay prevented');
-        });
+        heroVideoRef.current.currentTime = 0; // Start from beginning
+        
+        // Multiple attempts to ensure playback starts
+        const playVideo = () => {
+          if (heroVideoRef.current) {
+            heroVideoRef.current.play().catch((error) => {
+              console.log('Hero video autoplay prevented:', error);
+              // Try again after a short delay if autoplay is blocked
+              setTimeout(() => {
+                if (heroVideoRef.current && heroVideoRef.current.paused) {
+                  heroVideoRef.current.play().catch(() => {
+                    console.log('Hero video autoplay still prevented - user interaction required');
+                  });
+                }
+              }, 500);
+            });
+          }
+        };
+        
+        // Start playback immediately
+        playVideo();
+        
+        // Set as currently playing in video manager
+        if (heroVideoRef.current) {
+          videoManager.setCurrentlyPlaying(heroVideoRef.current);
+        }
       }
-    }, 100);
+    }, 200); // Slightly longer delay to ensure DOM is ready
   };
 
   // Show loading screen
@@ -143,9 +166,12 @@ export default function Home() {
             key="main-hero-video"
             onLoadedData={(e) => {
               const video = e.currentTarget;
-              video.play().catch(() => {
-                console.log('Autoplay prevented, but video is ready');
-              });
+              // Only auto-play if loading is complete, otherwise let handleLoadingComplete handle it
+              if (!isLoading) {
+                video.play().catch(() => {
+                  console.log('Autoplay prevented, but video is ready');
+                });
+              }
             }}
             onClick={() => {
               // When hero video is clicked, set it as currently playing
